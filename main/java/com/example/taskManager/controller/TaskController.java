@@ -2,12 +2,14 @@ package com.example.taskManager.controller;
 
 import com.example.taskManager.model.Task;
 import com.example.taskManager.service.TaskService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
@@ -22,13 +24,18 @@ public class TaskController {
         }
 
 
-        @PutMapping("/id")
-        public Task updateTask(@PathVariable Long id, @RequestBody Task taskDetails){
-            return taskService.updateTask(id,taskDetails);
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable Long id, @RequestBody Task taskDetails) {
+        return taskService.updateTask(id, taskDetails);
     }
 
 
-        @DeleteMapping("/id")
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task taskDetails){
+//        return ResponseEntity.ok(taskService.updateTask(id,taskDetails));
+//    }
+
+        @DeleteMapping("/{id}")
         public void deleteTask(@PathVariable Long id){
         taskService.deleteTask(id);
         }

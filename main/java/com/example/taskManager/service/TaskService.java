@@ -3,6 +3,7 @@ package com.example.taskManager.service;
 
 import com.example.taskManager.model.Task;
 import com.example.taskManager.repository.TaskRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@RequiredArgsConstructor
 @Service
 public class TaskService {
 
@@ -24,7 +25,7 @@ public class TaskService {
 
 
     public Task updateTask(Long id, Task taskDetails){
-        Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+        Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task ID not found"));
 
         task.setTitle(taskDetails.getTitle());
         task.setDescription(taskDetails.getDescription());
@@ -37,6 +38,7 @@ public class TaskService {
 
     public void deleteTask(Long id){
         Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+        taskRepository.delete(task);
     }
 
 

@@ -1,15 +1,16 @@
 package com.example.taskManager.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+//import lombok.*;
 
 import java.time.LocalDate;
 
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+//@Builder
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@RequiredArgsConstructor
+//@Data
 @Entity
 public class Task {
 
@@ -35,6 +36,9 @@ public class Task {
         this.category = category;
         this.dueDate = dueDate;
         this.completed = completed;
+    }
+
+    public Task() {
     }
 
     public Long getId() {
