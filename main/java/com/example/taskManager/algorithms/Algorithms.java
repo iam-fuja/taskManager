@@ -15,6 +15,7 @@ public class Algorithms {
         System.out.println(stringCompression("a"));
     }
 
+//    Second Algorithm
     public static String nonRepeating(String word){
         LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
         for (Character letter:word.toCharArray()){
@@ -34,7 +35,7 @@ public class Algorithms {
         return "-1";
 }
 
-
+    //    First Algorithm
 public static String stringCompression(String str){
         if (str == null || str.isEmpty()){
             return str;
